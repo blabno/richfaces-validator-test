@@ -1,0 +1,32 @@
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:rich="http://richfaces.org/rich" xmlns:f="http://java.sun.com/jsf/core" template="/layout/template.xhtml">
+
+    <ui:define name="body">
+
+
+        <rich:panel>
+            <f:facet name="header">Login</f:facet>
+            <h:form id="lF">
+                <h:panelGrid columns="3">
+                    <h:outputLabel accesskey="e" value="email" for="e"/>
+                    <h:inputText id="e" value="#{bean.email}" required="true">
+                        <rich:validator/>
+                    </h:inputText>
+                    <rich:message for="e"/>
+                    <h:panelGroup/>
+                    <h:commandButton id="l" value="Login" action="#{bean.login}" accesskey="l"/>
+                </h:panelGrid>
+            </h:form>
+        </rich:panel>
+
+        <p>Just type some non-email string into input and press tab (loose focus) so that validator be triggered.</p>
+
+        <p>Notice in Firebug that response is like this:</p>
+        <pre>
+            &lt;?xml version='1.0' encoding='UTF-8'?&gt;
+            &lt;partial-response&gt;&lt;error&gt;&lt;error-name&gt;class java.lang.UnsupportedOperationException&lt;/error-name&gt;&lt;error-message&gt;&lt;![CDATA[]]&gt;&lt;/error-message&gt;&lt;/error&gt;&lt;/partial-response&gt;
+        </pre>
+    </ui:define>
+</ui:composition>
